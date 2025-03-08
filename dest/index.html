@@ -9,8 +9,205 @@
     />
     <link href="./output.css" rel="stylesheet" />
   </head>
-  <body class="h-screen bg-cover bg-center bg-no-repeat">
-    <h1 class="bg-amber-700 text-3xl font-bold underline">Hello world!</h1>
+  <body class="h-screen bg-cyan-950 bg-cover bg-center bg-no-repeat">
+    <nav
+      class="fixed top-0 left-0 flex w-full items-center justify-between bg-transparent px-6 py-4"
+    >
+      <div class="text-xl font-bold">Logo</div>
+      <div class="flex space-x-6">
+        <a href="#" class="hover:text-gray-300">Home</a>
+        <a href="#" class="hover:text-gray-300">About</a>
+        <a href="#" class="hover:text-gray-300">Contact</a>
+      </div>
+    </nav>
+    <main class="flex min-h-screen flex-col items-center justify-center p-6">
+      <h1 class="mb-4 text-4xl font-bold text-white">
+        Financial Statements Generator
+      </h1>
+      <p class="mb-8 text-lg text-gray-300">
+        Easily generate your financial statements with our tool.
+      </p>
+
+      <form
+        id="financial-form"
+        class="flex w-full max-w-5xl flex-wrap rounded-lg bg-white p-6 shadow-lg"
+      >
+        <div class="mb-1.5 flex w-full justify-center">
+          <input
+            type="text"
+            placeholder="Enter company name"
+            class="w-2/4 rounded border-2 border-dashed border-blue-300 bg-white p-2 text-center text-gray-800 placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+        <h1
+          class="mx-auto mb-1.5 text-center text-4xl font-bold tracking-wide uppercase"
+        >
+          Financial Statment Generator
+        </h1>
+        <div class="mb-4 flex w-full justify-center">
+          <input
+            type="text"
+            placeholder="Enter company name"
+            class="mx-auto w-2/4 rounded border-2 border-dashed border-blue-300 bg-white p-2 text-center text-gray-800 placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+        <div class="flex w-full gap-8">
+          <!-- Left side: Total -->
+          <div class="w-full">
+            <h2 class="mb-4 text-xl font-bold">Total</h2>
+            <table
+              class="w-full border-collapse border border-gray-300 text-gray-800"
+            >
+              <tbody>
+                <tr class="bg-gray-100 font-bold">
+                  <td class="p-2">
+                    CURRENT ASSETS
+                    <i
+                      class="cursor-pointer text-green-500"
+                      onclick="addRow('revenue')"
+                      >+</i
+                    >
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3 border-b border-gray-300">
+                  <td class="p-2">
+                    <input type="text" value="Cash" class="w-full border p-1" />
+                  </td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'revenue')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="cursor-pointer text-red-500"
+                      >-</a
+                    >
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3 border-b border-gray-300">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Accounts Receivable"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'revenue')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="cursor-pointer text-red-500"
+                      >-</a
+                    >
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3 border-b border-gray-300">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Prepaid Expenses"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'revenue')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="cursor-pointer text-red-500"
+                      >-</a
+                    >
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3 border-b border-gray-300">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Inventory"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'revenue')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="cursor-pointer text-red-500"
+                      >-</a
+                    >
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3 font-bold">
+                  <td class="p-2">Total</td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      id="total-revenue"
+                      class="w-24 border p-1 text-right"
+                      readonly
+                    />
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="3" class="p-2">
+                    <hr class="border-gray-300" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Right side: Assets -->
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded bg-blue-600 py-2 text-white hover:bg-blue-700"
+        >
+          Generate
+        </button>
+      </form>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
     <script src="/dest/script.js"></script>
   </body>
