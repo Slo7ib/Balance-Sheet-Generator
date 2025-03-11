@@ -21,9 +21,7 @@
       </div>
     </nav>
     <main class="flex min-h-screen flex-col items-center justify-center p-6">
-      <h1 class="mb-4 text-4xl font-bold text-white">
-        Financial Statements Generator
-      </h1>
+      <h1 class="mb-4 text-4xl font-bold text-white">Balance Sheet Report</h1>
       <p class="mb-8 text-lg text-gray-300">
         Easily generate your financial statements with our tool.
       </p>
@@ -47,14 +45,18 @@
         <div class="mb-4 flex w-full justify-center">
           <input
             type="text"
-            placeholder="Enter company name"
+            placeholder="Enter statment period"
             class="mx-auto w-2/4 rounded border-2 border-dashed border-blue-300 bg-white p-2 text-center text-gray-800 placeholder-gray-500 focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="flex w-full gap-8">
           <!-- Left side: Total -->
           <div class="w-full">
-            <h2 class="mb-4 text-xl font-bold">Total</h2>
+            <div class="flex justify-between px-4">
+              <h2 class="mb-4 text-3xl font-extrabold uppercase">assests</h2>
+              <h2 class="mb-4 text-3xl font-extrabold uppercase">total</h2>
+            </div>
+
             <table
               class="w-full border-collapse border border-gray-300 text-gray-800"
             >
@@ -198,6 +200,560 @@
 
           <!-- Right side: Assets -->
         </div>
+
+        <table class="w-full border-collapse">
+          <tbody>
+            <tr class="bg-gray-100">
+              <td class="p-2 font-bold">
+                FIXED ASSETS
+                <i
+                  class="bi bi-plus-circle-fill no-print no-sheet cursor-pointer text-green-500"
+                  onclick="addRow('cogs')"
+                ></i>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Property &amp; Equipment"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'cogs')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Long-Term Investments"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'cogs')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 font-bold">Total</td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="total-cogs"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <hr class="my-2 border-t" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="w-full border-collapse">
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2 font-bold">
+                <h5 id="total-assets-title">Total Assets</h5>
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="gross-profit"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <hr class="my-2 border-t" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="w-full border-collapse">
+          <tbody>
+            <tr>
+              <th class="p-2">
+                <h5 class="no-sheet">LIABILITIES</h5>
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="p-2 font-bold">
+                CURRENT LIABILITIES
+                <i
+                  class="bi bi-plus-circle-fill no-print no-sheet cursor-pointer text-green-500"
+                  onclick="addRow('nonopinc')"
+                ></i>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Accounts Payable"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'nonopinc')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Taxes Payable"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'nonopinc')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 font-bold">Total</td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="total-nonopinc"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <hr class="my-2 border-t" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="w-full border-collapse">
+          <tbody>
+            <tr>
+              <th class="p-2">
+                <h5 class="no-sheet">LONG TERM LIABILITIES</h5>
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+
+            <tr class="bg-gray-100">
+              <td class="p-2 font-bold">
+                LONG-TERM LIABILITIES
+                <i
+                  class="bi bi-plus-circle-fill no-print no-sheet cursor-pointer text-green-500"
+                  onclick="addRow('nonopex')"
+                ></i>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Long-Term Debt"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'nonopex')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 font-bold">Total</td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="total-nonopex"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <hr class="my-2 border-t" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <tr>
+          <td class="fw-bold">
+            <h5 id="total-liabilities-title">Total Liabilities</h5>
+          </td>
+          <td></td>
+          <td class="text-end">
+            <span> $ </span>
+            <input
+              class="text-end"
+              id="net-profit"
+              placeholder="0.00"
+              readonly=""
+              step="any"
+              type="number"
+              value="0"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <hr />
+          </td>
+        </tr>
+        <!--start-->
+        <table class="w-full border-collapse">
+          <tbody>
+            <tr>
+              <th class="p-2">
+                <h5 class="no-sheet">LIABILITIES</h5>
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="p-2 font-bold">
+                CURRENT LIABILITIES
+                <i
+                  class="bi bi-plus-circle-fill no-print no-sheet cursor-pointer text-green-500"
+                  onclick="addRow('nonopinc')"
+                ></i>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Accounts Payable"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'nonopinc')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Taxes Payable"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'nonopinc')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="p-2 font-bold">
+                LONG-TERM LIABILITIES
+                <i
+                  class="bi bi-plus-circle-fill no-print no-sheet cursor-pointer text-green-500"
+                  onclick="addRow('nonopex')"
+                ></i>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Long-Term Debt"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'nonopex')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 font-bold">Total</td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="total-nonopex"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 font-bold">
+                <h5 id="total-liabilities-title">Total Liabilities</h5>
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="net-profit"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <hr class="my-2 border-t" />
+              </td>
+            </tr>
+            <tr>
+              <th class="p-2">
+                <h5 class="no-sheet">OWNER'S EQUITY</h5>
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="p-2 font-bold">
+                OWNER'S EQUITY
+                <i
+                  class="bi bi-plus-circle-fill no-print no-sheet cursor-pointer text-green-500"
+                  onclick="addRow('opex')"
+                ></i>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Investment Capital"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'opex')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <input
+                  type="text"
+                  value="Retained Earnings"
+                  class="w-full border p-1"
+                />
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <input
+                  class="border p-1 text-right"
+                  onchange="calculate(this.value, 'opex')"
+                  placeholder="0.00"
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+                <a class="no-print no-sheet" onclick="deleteRow(this)">
+                  <i class="bi bi-dash-circle cursor-pointer text-red-500"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 font-bold">Total</td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="total-opex"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="w-full border-collapse">
+          <tbody>
+            <!-- Existing Content -->
+            <tr>
+              <td class="p-2 font-bold">
+                <h5 id="total-owners-equity">Total Owner's Equity</h5>
+              </td>
+              <td></td>
+              <td class="p-2 text-right">
+                <span>$</span>
+                <input
+                  class="border p-1 text-right"
+                  id="op-income"
+                  placeholder="0.00"
+                  readonly
+                  step="any"
+                  type="number"
+                  value="0"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <hr class="my-2 border-t" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <tr>
+          <td class="fw-bold">
+            <h5 id="total-lia-ow-title">
+              Total Liabilities &amp; Owner's Equity
+            </h5>
+          </td>
+          <td></td>
+          <td class="text-end">
+            <span> $ </span>
+            <input
+              class="text-end"
+              id="total_lia_ow"
+              placeholder="0.00"
+              readonly=""
+              step="any"
+              type="number"
+              value="0"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <hr />
+          </td>
+        </tr>
 
         <button
           type="submit"
