@@ -49,7 +49,7 @@
             class="mx-auto w-2/4 rounded border-2 border-dashed border-blue-300 bg-white p-2 text-center text-gray-800 placeholder-gray-500 focus:border-blue-500 focus:outline-none"
           />
         </div>
-        <div class="flex w-full gap-8">
+        <div class="flex w-full gap-4">
           <!-- Left side: Total -->
           <div class="w-full">
             <div class="flex justify-between px-4">
@@ -57,12 +57,10 @@
               <h2 class="mb-4 text-3xl font-extrabold uppercase">total</h2>
             </div>
 
-            <table
-              class="w-full border-collapse border border-gray-300 text-gray-800"
-            >
+            <table class="w-full text-gray-800">
               <tbody>
-                <tr class="bg-gray-100 font-bold">
-                  <td class="p-2">
+                <tr class="font-bold">
+                  <td class="p-2 text-xl font-bold">
                     CURRENT ASSETS
                     <i
                       class="cursor-pointer text-green-500"
@@ -72,12 +70,12 @@
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 border-b border-gray-300">
+                <tr class="grid grid-cols-3">
                   <td class="p-2">
                     <input type="text" value="Cash" class="w-full border p-1" />
                   </td>
                   <td></td>
-                  <td class="flex justify-end gap-2 p-2">
+                  <td class="flex items-center justify-end gap-2 p-2">
                     <input
                       type="number"
                       value="0"
@@ -87,14 +85,16 @@
                       onchange="calculate(this.value, 'revenue')"
                     />
                     <a
+                      id="rowDeleter"
                       onclick="deleteRow(this)"
-                      class="cursor-pointer text-red-500"
-                      >-</a
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
+                      -
+                    </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 border-b border-gray-300">
+                <tr class="grid grid-cols-3">
                   <td class="p-2">
                     <input
                       type="text"
@@ -103,7 +103,7 @@
                     />
                   </td>
                   <td></td>
-                  <td class="flex justify-end gap-2 p-2">
+                  <td class="flex items-center justify-end gap-2 p-2">
                     <input
                       type="number"
                       value="0"
@@ -114,13 +114,14 @@
                     />
                     <a
                       onclick="deleteRow(this)"
-                      class="cursor-pointer text-red-500"
-                      >-</a
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
+                      -
+                    </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 border-b border-gray-300">
+                <tr class="grid grid-cols-3">
                   <td class="p-2">
                     <input
                       type="text"
@@ -129,7 +130,7 @@
                     />
                   </td>
                   <td></td>
-                  <td class="flex justify-end gap-2 p-2">
+                  <td class="flex items-center justify-end gap-2 p-2">
                     <input
                       type="number"
                       value="0"
@@ -140,13 +141,14 @@
                     />
                     <a
                       onclick="deleteRow(this)"
-                      class="cursor-pointer text-red-500"
-                      >-</a
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
+                      -
+                    </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 border-b border-gray-300">
+                <tr class="grid grid-cols-3">
                   <td class="p-2">
                     <input
                       type="text"
@@ -155,7 +157,7 @@
                     />
                   </td>
                   <td></td>
-                  <td class="flex justify-end gap-2 p-2">
+                  <td class="flex items-center justify-end gap-2 p-2">
                     <input
                       type="number"
                       value="0"
@@ -166,9 +168,10 @@
                     />
                     <a
                       onclick="deleteRow(this)"
-                      class="cursor-pointer text-red-500"
-                      >-</a
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
+                      -
+                    </a>
                   </td>
                 </tr>
 
@@ -202,108 +205,108 @@
         </div>
 
         <!-- Fixed Assets -->
-        <div class="w-full">
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
-            <tbody>
-              <tr class="bg-gray-100 font-bold">
-                <td class="p-2">
-                  FIXED ASSETS
-                  <i
-                    class="cursor-pointer text-green-500"
-                    onclick="addRow('revenue')"
-                    >+</i
-                  >
-                </td>
-              </tr>
+        <div class="flex w-full gap-4">
+          <div class="w-full">
+            <table class="w-full text-gray-800">
+              <tbody>
+                <tr class="font-bold">
+                  <td class="p-2 text-xl font-bold">
+                    FIXED ASSETS
+                    <i
+                      class="cursor-pointer text-green-500"
+                      onclick="addRow('revenue')"
+                      >+</i
+                    >
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Property &amp; Equipment"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'cogs')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Property &amp; Equipment"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'cogs')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Long-Term Investments"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'cogs')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Long-Term Investments"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'cogs')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 font-bold">
-                <td class="p-2">Total</td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <span>$</span>
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    id="total-cogs"
-                    class="w-24 border p-1 text-right"
-                    readonly
-                  />
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3 font-bold">
+                  <td class="p-2">Total</td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      id="total-cogs"
+                      class="w-24 border p-1 text-right"
+                      readonly
+                    />
+                  </td>
+                </tr>
 
-              <tr>
-                <td colspan="3" class="p-2">
-                  <hr class="border-gray-300" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td colspan="3" class="p-2">
+                    <hr class="border-gray-300" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Total Assets -->
-        <div class="w-full">
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
+        <div class="my-6 w-full">
+          <table class="w-full text-gray-800">
             <tbody>
               <tr class="border-t">
-                <td class="p-2 font-bold">
+                <td class="p-2 text-xl font-bold">
                   <h5 id="total-assets-title">Total Assets</h5>
                 </td>
                 <td></td>
@@ -331,178 +334,179 @@
 
         <!-- Current Liabilities -->
 
-        <div class="w-full">
-          <h1 class="mb-4 text-3xl font-extrabold uppercase">liabilities</h1>
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
-            <tbody>
-              <tr class="bg-gray-100 font-bold">
-                <td class="p-2">
-                  CURRENT LIABILITIES
-                  <i
-                    class="cursor-pointer text-green-500"
-                    onclick="addRow('nonopinc')"
-                    >+</i
-                  >
-                </td>
-              </tr>
+        <div class="flex w-full gap-4">
+          <div class="w-full">
+            <h1 class="mb-4 text-3xl font-extrabold uppercase">liabilities</h1>
+            <table class="w-full text-gray-800">
+              <tbody>
+                <tr class="font-bold">
+                  <td class="p-2 text-xl font-bold">
+                    CURRENT LIABILITIES
+                    <i
+                      class="cursor-pointer text-green-500"
+                      onclick="addRow('nonopinc')"
+                      >+</i
+                    >
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Accounts Payable"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'nonopinc')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Accounts Payable"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'nonopinc')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Taxes Payable"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'nonopinc')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Taxes Payable"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'nonopinc')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 font-bold">
-                <td class="p-2">Total</td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <span>$</span>
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    id="total-nonopinc"
-                    class="w-24 border p-1 text-right"
-                    readonly
-                  />
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3 font-bold">
+                  <td class="p-2">Total</td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      id="total-nonopinc"
+                      class="w-24 border p-1 text-right"
+                      readonly
+                    />
+                  </td>
+                </tr>
 
-              <tr>
-                <td colspan="3" class="p-2">
-                  <hr class="border-gray-300" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td colspan="3" class="p-2">
+                    <hr class="border-gray-300" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Long-Term Liabilities -->
-        <div class="w-full">
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
-            <tbody>
-              <tr class="bg-gray-100 font-bold">
-                <td class="p-2">
-                  LONG-TERM LIABILITIES
-                  <i
-                    class="cursor-pointer text-green-500"
-                    onclick="addRow('nonopex')"
-                    >+</i
-                  >
-                </td>
-              </tr>
+        <div class="flex w-full gap-4">
+          <div class="w-full">
+            <table class="w-full text-gray-800">
+              <tbody>
+                <tr class="font-bold">
+                  <td class="p-2 text-xl font-bold">
+                    LONG-TERM LIABILITIES
+                    <i
+                      class="cursor-pointer text-green-500"
+                      onclick="addRow('nonopex')"
+                      >+</i
+                    >
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Long-Term Debt"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'nonopex')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Long-Term Debt"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'nonopex')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
 
-              <tr class="grid grid-cols-3 font-bold">
-                <td class="p-2">Total</td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <span>$</span>
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    id="total-nonopex"
-                    class="w-24 border p-1 text-right"
-                    readonly
-                  />
-                </td>
-              </tr>
+                <tr class="grid grid-cols-3 font-bold">
+                  <td class="p-2">Total</td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      id="total-nonopex"
+                      class="w-24 border p-1 text-right"
+                      readonly
+                    />
+                  </td>
+                </tr>
 
-              <tr>
-                <td colspan="3" class="p-2">
-                  <hr class="border-gray-300" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td colspan="3" class="p-2">
+                    <hr class="border-gray-300" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Total Liabilities -->
-        <div class="w-full">
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
+        <div class="my-6 w-full">
+          <table class="w-full text-gray-800">
             <tbody>
               <tr class="border-t">
-                <td class="p-2 font-bold">
+                <td class="p-2 text-xl font-bold">
                   <h5 id="total-liabilities-title">Total Liabilities</h5>
                 </td>
                 <td></td>
@@ -529,114 +533,114 @@
         </div>
 
         <!-- Owner's Equity -->
-        <div class="w-full">
-          <div class="flex justify-between px-4">
-            <h2 class="mb-4 text-3xl font-extrabold uppercase">
-              owner's equity
-            </h2>
+        <div class="flex w-full gap-4">
+          <div class="w-full">
+            <div class="flex justify-between px-4">
+              <h2 class="mb-4 text-3xl font-extrabold uppercase">
+                owner's equity
+              </h2>
+            </div>
+
+            <table class="w-full text-gray-800">
+              <tbody>
+                <tr class="font-bold">
+                  <td class="p-2 text-xl font-bold">
+                    OWNER'S EQUITY
+                    <i
+                      class="cursor-pointer text-green-500"
+                      onclick="addRow('opex')"
+                      >+</i
+                    >
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Investment Capital"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'opex')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3">
+                  <td class="p-2">
+                    <input
+                      type="text"
+                      value="Retained Earnings"
+                      class="w-full border p-1"
+                    />
+                  </td>
+                  <td></td>
+                  <td class="flex items-center justify-end gap-2 p-2">
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      class="w-24 border p-1 text-right"
+                      onchange="calculate(this.value, 'opex')"
+                    />
+                    <a
+                      onclick="deleteRow(this)"
+                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                    >
+                      -
+                    </a>
+                  </td>
+                </tr>
+
+                <tr class="grid grid-cols-3 font-bold">
+                  <td class="p-2">Total</td>
+                  <td></td>
+                  <td class="flex justify-end gap-2 p-2">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      value="0"
+                      step="any"
+                      placeholder="0.00"
+                      id="total-opex"
+                      class="w-24 border p-1 text-right"
+                      readonly
+                    />
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="3" class="p-2">
+                    <hr class="border-gray-300" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
-            <tbody>
-              <tr class="bg-gray-100 font-bold">
-                <td class="p-2">
-                  OWNER'S EQUITY
-                  <i
-                    class="cursor-pointer text-green-500"
-                    onclick="addRow('opex')"
-                    >+</i
-                  >
-                </td>
-              </tr>
-
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Investment Capital"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'opex')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
-
-              <tr class="grid grid-cols-3 border-b border-gray-300">
-                <td class="p-2">
-                  <input
-                    type="text"
-                    value="Retained Earnings"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    class="w-24 border p-1 text-right"
-                    onchange="calculate(this.value, 'opex')"
-                  />
-                  <a
-                    onclick="deleteRow(this)"
-                    class="cursor-pointer text-red-500"
-                    >-</a
-                  >
-                </td>
-              </tr>
-
-              <tr class="grid grid-cols-3 font-bold">
-                <td class="p-2">Total</td>
-                <td></td>
-                <td class="flex justify-end gap-2 p-2">
-                  <span>$</span>
-                  <input
-                    type="number"
-                    value="0"
-                    step="any"
-                    placeholder="0.00"
-                    id="total-opex"
-                    class="w-24 border p-1 text-right"
-                    readonly
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td colspan="3" class="p-2">
-                  <hr class="border-gray-300" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
 
         <!-- Total Owner's Equity -->
         <div class="w-full">
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
+          <table class="w-full text-gray-800">
             <tbody>
               <tr class="border-t">
-                <td class="p-2 font-bold">
+                <td class="p-2 text-xl font-bold">
                   <h5 id="total-owners-equity">Total Owner's Equity</h5>
                 </td>
                 <td></td>
@@ -664,12 +668,10 @@
 
         <!-- Total Liabilities & Owner's Equity -->
         <div class="w-full">
-          <table
-            class="w-full border-collapse border border-gray-300 text-gray-800"
-          >
+          <table class="w-full text-gray-800">
             <tbody>
               <tr class="border-t">
-                <td class="p-2 font-bold">
+                <td class="p-2 text-xl font-bold">
                   <h5 id="total-lia-ow-title">
                     Total Liabilities &amp; Owner's Equity
                   </h5>
