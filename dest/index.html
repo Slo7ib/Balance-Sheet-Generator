@@ -7,6 +7,10 @@
       href="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <link href="./output.css" rel="stylesheet" />
   </head>
   <body class="h-screen bg-cyan-950 bg-cover bg-center bg-no-repeat">
@@ -60,11 +64,10 @@
             <table class="w-full text-gray-800">
               <tbody>
                 <tr class="font-bold">
-                  <td class="p-2 text-xl font-bold">
+                  <td class="flex items-center p-2 text-xl font-bold">
                     CURRENT ASSETS
                     <i
-                      class="cursor-pointer text-green-500"
-                      onclick="addRow('revenue')"
+                      class="add-item ml-2 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full bg-green-500 text-white"
                       >+</i
                     >
                   </td>
@@ -85,9 +88,7 @@
                       onchange="calculate(this.value, 'revenue')"
                     />
                     <a
-                      id="rowDeleter"
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
@@ -113,8 +114,7 @@
                       onchange="calculate(this.value, 'revenue')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
@@ -140,8 +140,7 @@
                       onchange="calculate(this.value, 'revenue')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
@@ -167,15 +166,14 @@
                       onchange="calculate(this.value, 'revenue')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 font-bold">
+                <tr class="total-row grid grid-cols-3 font-bold">
                   <td class="p-2">Total</td>
                   <td></td>
                   <td class="flex justify-end gap-2 p-2">
@@ -185,7 +183,7 @@
                       value="0"
                       step="any"
                       placeholder="0.00"
-                      id="total-revenue"
+                      id="total-current-assets"
                       class="w-24 border p-1 text-right"
                       readonly
                     />
@@ -210,11 +208,10 @@
             <table class="w-full text-gray-800">
               <tbody>
                 <tr class="font-bold">
-                  <td class="p-2 text-xl font-bold">
+                  <td class="flex items-center p-2 text-xl font-bold">
                     FIXED ASSETS
                     <i
-                      class="cursor-pointer text-green-500"
-                      onclick="addRow('revenue')"
+                      class="add-item ml-2 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full bg-green-500 text-white"
                       >+</i
                     >
                   </td>
@@ -239,8 +236,7 @@
                       onchange="calculate(this.value, 'cogs')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
@@ -266,15 +262,14 @@
                       onchange="calculate(this.value, 'cogs')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 font-bold">
+                <tr class="total-row grid grid-cols-3 font-bold">
                   <td class="p-2">Total</td>
                   <td></td>
                   <td class="flex justify-end gap-2 p-2">
@@ -284,7 +279,7 @@
                       value="0"
                       step="any"
                       placeholder="0.00"
-                      id="total-cogs"
+                      id="total-fixed-assets"
                       class="w-24 border p-1 text-right"
                       readonly
                     />
@@ -314,7 +309,7 @@
                   <span>$</span>
                   <input
                     class="border p-1 text-right"
-                    id="gross-profit"
+                    id="total-assets"
                     placeholder="0.00"
                     readonly
                     step="any"
@@ -340,11 +335,10 @@
             <table class="w-full text-gray-800">
               <tbody>
                 <tr class="font-bold">
-                  <td class="p-2 text-xl font-bold">
+                  <td class="flex items-center p-2 text-xl font-bold">
                     CURRENT LIABILITIES
                     <i
-                      class="cursor-pointer text-green-500"
-                      onclick="addRow('nonopinc')"
+                      class="add-item ml-2 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full bg-green-500 text-white"
                       >+</i
                     >
                   </td>
@@ -369,8 +363,7 @@
                       onchange="calculate(this.value, 'nonopinc')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
@@ -396,15 +389,14 @@
                       onchange="calculate(this.value, 'nonopinc')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 font-bold">
+                <tr class="total-row grid grid-cols-3 font-bold">
                   <td class="p-2">Total</td>
                   <td></td>
                   <td class="flex justify-end gap-2 p-2">
@@ -414,7 +406,7 @@
                       value="0"
                       step="any"
                       placeholder="0.00"
-                      id="total-nonopinc"
+                      id="total-current-liabilities"
                       class="w-24 border p-1 text-right"
                       readonly
                     />
@@ -437,11 +429,10 @@
             <table class="w-full text-gray-800">
               <tbody>
                 <tr class="font-bold">
-                  <td class="p-2 text-xl font-bold">
+                  <td class="flex items-center p-2 text-xl font-bold">
                     LONG-TERM LIABILITIES
                     <i
-                      class="cursor-pointer text-green-500"
-                      onclick="addRow('nonopex')"
+                      class="add-item ml-2 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full bg-green-500 text-white"
                       >+</i
                     >
                   </td>
@@ -466,15 +457,14 @@
                       onchange="calculate(this.value, 'nonopex')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 font-bold">
+                <tr class="total-row grid grid-cols-3 font-bold">
                   <td class="p-2">Total</td>
                   <td></td>
                   <td class="flex justify-end gap-2 p-2">
@@ -484,7 +474,7 @@
                       value="0"
                       step="any"
                       placeholder="0.00"
-                      id="total-nonopex"
+                      id="total-long-term-liabilities"
                       class="w-24 border p-1 text-right"
                       readonly
                     />
@@ -514,7 +504,7 @@
                   <span>$</span>
                   <input
                     class="border p-1 text-right"
-                    id="net-profit"
+                    id="total-liabilities"
                     placeholder="0.00"
                     readonly
                     step="any"
@@ -544,11 +534,10 @@
             <table class="w-full text-gray-800">
               <tbody>
                 <tr class="font-bold">
-                  <td class="p-2 text-xl font-bold">
+                  <td class="flex items-center p-2 text-xl font-bold">
                     OWNER'S EQUITY
                     <i
-                      class="cursor-pointer text-green-500"
-                      onclick="addRow('opex')"
+                      class="add-item ml-2 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full bg-green-500 text-white"
                       >+</i
                     >
                   </td>
@@ -573,8 +562,7 @@
                       onchange="calculate(this.value, 'opex')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
@@ -600,15 +588,14 @@
                       onchange="calculate(this.value, 'opex')"
                     />
                     <a
-                      onclick="deleteRow(this)"
-                      class="flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
+                      class="delete-item flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border border-red-500 bg-white text-lg text-red-500"
                     >
                       -
                     </a>
                   </td>
                 </tr>
 
-                <tr class="grid grid-cols-3 font-bold">
+                <tr class="total-row grid grid-cols-3 font-bold">
                   <td class="p-2">Total</td>
                   <td></td>
                   <td class="flex justify-end gap-2 p-2">
@@ -618,7 +605,7 @@
                       value="0"
                       step="any"
                       placeholder="0.00"
-                      id="total-opex"
+                      id="total-owners-equity"
                       class="w-24 border p-1 text-right"
                       readonly
                     />
@@ -681,7 +668,7 @@
                   <span>$</span>
                   <input
                     class="border p-1 text-right"
-                    id="total_lia_ow"
+                    id="total-liabilities-owners-equity"
                     placeholder="0.00"
                     readonly
                     step="any"
