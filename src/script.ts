@@ -46,33 +46,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = [
       {
         id: "total-current-assets",
-        inputs: document.querySelectorAll(
-          "#total-current-assets ~ tr input[type='number']",
-        ),
+        inputs: document.querySelectorAll("tbody input[type='number']"),
       },
       {
         id: "total-fixed-assets",
-        inputs: document.querySelectorAll(
-          "#total-fixed-assets ~ tr input[type='number']",
-        ),
+        inputs: document.querySelectorAll("tbody input[type='number']"),
       },
       {
         id: "total-current-liabilities",
-        inputs: document.querySelectorAll(
-          "#total-current-liabilities ~ tr input[type='number']",
-        ),
+        inputs: document.querySelectorAll("tbody input[type='number']"),
       },
       {
         id: "total-long-term-liabilities",
-        inputs: document.querySelectorAll(
-          "#total-long-term-liabilities ~ tr input[type='number']",
-        ),
+        inputs: document.querySelectorAll("tbody input[type='number']"),
       },
       {
         id: "total-owners-equity",
-        inputs: document.querySelectorAll(
-          "#total-owners-equity ~ tr input[type='number']",
-        ),
+        inputs: document.querySelectorAll("tbody input[type='number']"),
       },
     ];
 
